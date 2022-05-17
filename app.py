@@ -58,7 +58,7 @@ bp = Blueprint(
 #     return render_template("landingPage.html")
 
 
-@bp.route("/")
+@bp.route("/", methods=["POST", "GET"])
 @bp.route("/saved")
 @bp.route("/EditProfile")
 @bp.route("/NewPost")

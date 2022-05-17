@@ -1,12 +1,31 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 
-const clientId =
+const clientId = process.env.REACT_APP_GOOGLE_OAUTH_CLIENTID;
 
-    function Login() {
-        return (
-            <h1>LOGIN</h1>
-        )
-    }
+function Login() {
+    const onSuccess = (res) => {
+        //call backend login function
+        console.log('[Login Success] currentUser:', res.profileObj);
+    };
+
+    const onFailure = (res) => {
+        console.log('[Login failed] res:', res);
+    };
+
+    return (
+        <div>
+            <GoogleLogin
+                clientId={clientId}
+                buttonText="Login"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'}
+                style={{ margin: '100px' }}
+                isSignedIn={true}
+            />
+        </div>
+    );
+}
 
 export default Login;

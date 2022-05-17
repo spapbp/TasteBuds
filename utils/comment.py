@@ -1,6 +1,3 @@
-"""
-comment.py
-"""
 import flask
 
 # pylint: disable=unused-import
@@ -42,16 +39,18 @@ def upload_comment():
 
 @comment.route("/load_comment", methods=["GET"])
 def load_comment():
-
+    """
+    placeholder
+    """
     # comments = Comment.query.filter_by(user_id=current_user.id)
     comments = Comment.query.all()
     return jsonify(
         [
             {
                 "username": current_user.id,
-                "post_id": Comment.post_id,
-                "comment": Comment.comment,
+                "post_id": comment.post_id,
+                "comment": comment.comment,
             }
-            for Comment in reversed(comments)
+            for comment in reversed(comments)
         ]
     )
